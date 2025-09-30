@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static blockchain.hashFunction.MathUtils.sumListIntegers;
+import static blockchain.hashFunction.MathUtils.*;
 
 
 public class HashFunction {
@@ -15,7 +15,6 @@ public class HashFunction {
         int[] inputArray = input.chars().toArray();
 
         List<Integer> inputList = new ArrayList<>(IntStream.of(inputArray).boxed().toList());
-        System.out.println(inputList);
 
         int inputIntegersSum = sumListIntegers(inputList);
         // In case if sum turned over and is negative
@@ -25,6 +24,15 @@ public class HashFunction {
             inputList.set(i, (i * 7 + inputList.get(i)) % additionalInteger);
         }
 
+        // Transform input to be equal or more than 64 integers
+        while(inputList.size() < 64){
+            int inputSize = inputList.size();
+            for (int i = 0; i < inputSize; i++){
+                inputList.add(inputList.get(i));
+            }
+        }
+
+        // Transform input to 64 integers
         int counter = 0;
         while (inputList.size() > 64 && counter < inputList.size()){
             inputList.set(counter, (inputList.get(counter) + 7) * (inputList.getLast() + 7));
@@ -32,13 +40,21 @@ public class HashFunction {
             counter++;
         }
 
-        // Implementation if size < 64
-        System.out.println(inputList);
-        System.out.println("-----------------");
+        // Mix list
         inputList = getMixedIntegers(inputList);
 
-        System.out.println(inputList.size());
-        return inputList.toString();
+        // Make each integer be less than 16
+        for (int i = 0; i < inputList.size(); i++){
+            inputList.set(i, inputList.get(i) % 16);
+        }
+
+        // Transform list to hex format
+        StringBuilder hex = new StringBuilder();
+        for (int integer : inputList){
+            hex.append(toHex(integer));
+        }
+
+        return hex.toString();
     }
 
     private List<Integer> getMixedIntegers(List<Integer> input){
