@@ -106,7 +106,9 @@ public class HashFunction {
 
         // add to mixedInput last elements and encrypt them
         for (int i = 0; i < inputSize % mixPediod; i++){
-            mixedInput.set(i, input.get(counter) * mixPediod / (i + 1));
+            int encryptedInteger = input.get(counter) * mixPediod / (i + 1);
+            encryptedInteger = (encryptedInteger < 0) ? encryptedInteger * -1 : encryptedInteger;
+            mixedInput.set(i, encryptedInteger);
             counter++;
         }
         return mixedInput;
