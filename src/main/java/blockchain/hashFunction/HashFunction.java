@@ -10,22 +10,17 @@ import static blockchain.hashFunction.MathUtils.*;
 
 public class HashFunction {
     public String hashFile(String filename, String salt){
-        StringJoiner data = new StringJoiner(System.lineSeparator());
+        FileReader reader = new FileReader();
+        String data = reader.readFile(filename);
 
-        File file = new File(filename);
-        try (Scanner reader = new Scanner(file)){
-           while (reader.hasNextLine()){
-               data.add(reader.nextLine());
-           }
-        } catch (FileNotFoundException e){
-            System.out.println(e.getMessage());
+        if (data == null){
             return null;
         }
 
-        return hash(data.toString(), salt);
+        return hashString(data, salt);
     }
 
-    public String hash(String input, String salt){
+    public String hashString(String input, String salt){
         input += salt;
         if (input.isEmpty()){
             input = " ";
@@ -100,7 +95,6 @@ public class HashFunction {
                 insidePediodMix = mixPediod - i + (i / 2);
             }
             for (int j = 1; j <= iterationIntegersNumber; j++){
-                //mixedInput.charAt(inputSize - mixPediod * j + insidePediodMix) = Character.forDigit(input.get(counter), 10);
                 int index = inputSize - mixPediod * j + insidePediodMix;
                 mixedInput.set(index, input.get(counter));
                 counter++;
