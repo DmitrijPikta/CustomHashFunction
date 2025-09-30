@@ -27,6 +27,9 @@ public class HashFunction {
 
     public String hash(String input, String salt){
         input += salt;
+        if (input.isEmpty()){
+            input = " ";
+        }
         // Convert symbols to int
         int[] inputArray = input.chars().toArray();
 
@@ -44,7 +47,7 @@ public class HashFunction {
         while(inputList.size() < 64){
             int inputSize = inputList.size();
             for (int i = 0; i < inputSize; i++){
-                inputList.add(inputList.get(i));
+                inputList.add(inputList.get(i) + i % 2 + 1);
             }
         }
 
