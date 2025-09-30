@@ -1,14 +1,30 @@
 package blockchain.hashFunction;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.*;
 import java.util.stream.IntStream;
 
 import static blockchain.hashFunction.MathUtils.*;
 
 
 public class HashFunction {
+    public String hashFile(String filename, String salt){
+        StringJoiner data = new StringJoiner(System.lineSeparator());
+
+        File file = new File(filename);
+        try (Scanner reader = new Scanner(file)){
+           while (reader.hasNextLine()){
+               data.add(reader.nextLine());
+           }
+        } catch (FileNotFoundException e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+
+        return hash(data.toString(), salt);
+    }
+
     public String hash(String input, String salt){
         input += salt;
         // Convert symbols to int
@@ -33,11 +49,15 @@ public class HashFunction {
         }
 
         // Transform input to 64 integers
-        int counter = 0;
-        while (inputList.size() > 64 && counter < inputList.size()){
-            inputList.set(counter, (inputList.get(counter) + 7) * (inputList.getLast() + 7));
-            inputList.removeLast();
-            counter++;
+        while (inputList.size() != 64) {
+            int counter = 0;
+            while (inputList.size() > 64 && counter < inputList.size()) {
+                int integer = (inputList.get(counter) + 7) * (inputList.getLast() + 7);
+                integer = (integer < 0) ? integer * -1 : integer;
+                inputList.set(counter, integer);
+                inputList.removeLast();
+                counter++;
+            }
         }
 
         // Mix list
