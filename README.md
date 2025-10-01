@@ -54,18 +54,21 @@ function hashString(input, salt):
 ## Analyze of custom hash function
 ### Result size should be always same (64 symbols)
 
-![Screenshot 2025-10-01 154013.png](..%2F..%2FOneDrive%2F%C8%E7%EE%E1%F0%E0%E6%E5%ED%E8%FF%2FScreenshots%2FScreenshot%202025-10-01%20154013.png)
+<img width="689" height="158" alt="Screenshot 2025-10-01 154013" src="https://github.com/user-attachments/assets/d161abcc-b905-4487-884c-f689d1bc4d6a" />
 
-![Screenshot 2025-10-01 154039.png](..%2F..%2FOneDrive%2F%C8%E7%EE%E1%F0%E0%E6%E5%ED%E8%FF%2FScreenshots%2FScreenshot%202025-10-01%20154039.png)
+<img width="316" height="174" alt="Screenshot 2025-10-01 154039" src="https://github.com/user-attachments/assets/8152028e-c5aa-4ef6-a972-d13cc6e275b6" />
 
 All tests have passed that's means custom hash function work correct.
+
+
 ### Determinism, one input should not give several results
 
-![Screenshot 2025-10-01 154829.png](..%2F..%2FOneDrive%2F%C8%E7%EE%E1%F0%E0%E6%E5%ED%E8%FF%2FScreenshots%2FScreenshot%202025-10-01%20154829.png)
+<img width="559" height="156" alt="Screenshot 2025-10-01 154829" src="https://github.com/user-attachments/assets/8aef1dda-a8dd-4ee7-bcc0-40715c3cfec9" />
 
-![Screenshot 2025-10-01 154905.png](..%2F..%2FOneDrive%2F%C8%E7%EE%E1%F0%E0%E6%E5%ED%E8%FF%2FScreenshots%2FScreenshot%202025-10-01%20154905.png)
+<img width="309" height="168" alt="Screenshot 2025-10-01 154905" src="https://github.com/user-attachments/assets/5131fa23-980a-47eb-ab28-78edcf616036" />
 
 All tests have passed that's means custom hash function work correct.
+
 
 ### Hashing performance
 We will analyze dependence of input size on hashing speed. To measure hashing speed we have created HashSpeedTest class and Timer class.
@@ -77,4 +80,5 @@ We will analyze dependence of input size on hashing speed. To measure hashing sp
 | 3 time    | 515700  | 493000  | 561600  | 715900  | 1170500  | 1491900  | 2512800  | 5002300  | 9164600   | 9643000   |
 | **Average** | 540733.3 | 492800  | 580766.7 | 689733.3 | 1172933.3 | 1451566.7 | 2473966.7 | 4845800  | 9031233.3 | 9578233.3 |
 
-![Screenshot 2025-10-01 161851.png](..%2F..%2FOneDrive%2F%C8%E7%EE%E1%F0%E0%E6%E5%ED%E8%FF%2FScreenshots%2FScreenshot%202025-10-01%20161851.png)
+<img width="481" height="289" alt="Screenshot 2025-10-01 161851" src="https://github.com/user-attachments/assets/872144b3-c5f6-49bc-af98-0f3d1a24227e" />
+
