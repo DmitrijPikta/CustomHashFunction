@@ -21,7 +21,6 @@ class HashFunctionTest {
     void hashFile_shouldReturnSameHash_WhenInputIsSame(String filepath){
         String firstHash = hasher.hashFile(filepath, salt);
         String secondHash = hasher.hashFile(filepath, salt);
-
         assertEquals(firstHash, secondHash);
     }
 }
