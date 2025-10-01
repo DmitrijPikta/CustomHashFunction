@@ -89,6 +89,28 @@ We have generated 4 files with 100000 pair of different strings with string leng
 
 Test have found 0 collisions, so we can say collitions percent is close to 0.
 
+### Avalanche effect testing
+To test avalanche effect we have created HashAvalansheEffectTester class that takes List<List<String>> second list should have 2 strings. HashAvalansheEffectTester calcutate similiarity of this 2 strings in hex and in binary level and as rezult return information about strings max, min and average similiarities of strings. 
+
+We will take list of 100000 string pairs where one string different from another only by one symbol and they length is 100 symbols.
+<img width="776" height="70" alt="Screenshot 2025-10-01 192041" src="https://github.com/user-attachments/assets/2eb5298c-8af5-4c7f-a45d-d09ff628e75b" />
+
+<img width="406" height="203" alt="Screenshot 2025-10-01 191115" src="https://github.com/user-attachments/assets/ae582a3d-e8d0-4420-9244-a1debd88209e" />
+
+Results are small, so we can say that avalanche test is passed. 
+
+### Puzzle-friendliness
+Our custom hash function use salt like second variable and inside add salt to input.
+```
+public String hashString(String input, String salt){
+    input += salt;
+}
+```
+As a result, even same input, but with another salt, will return another hash.
+
+### Conclusions
+Our custom hash generator have passed all tests, we have not found any collision and from avalanche test we have got good results. So we can say out custom hash function is strong.
+We have not found any weaknesses, but of course maybe to find them it is necessary to make more tests.
 
 
 
