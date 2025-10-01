@@ -82,3 +82,13 @@ We will analyze dependence of input size on hashing speed. To measure hashing sp
 
 <img width="481" height="289" alt="Screenshot 2025-10-01 161851" src="https://github.com/user-attachments/assets/872144b3-c5f6-49bc-af98-0f3d1a24227e" />
 
+### Collisions search
+We have generated 4 files with 100000 pair of different strings with string length of 10, 100, 500, 1000 symbols. 
+<img width="756" height="264" alt="Screenshot 2025-10-01 170520" src="https://github.com/user-attachments/assets/9e365f69-896f-4ae4-96ff-4763e154f0aa" />
+<img width="339" height="26" alt="Screenshot 2025-10-01 170540" src="https://github.com/user-attachments/assets/ba67a336-74f5-4d85-85fc-2ab1ab7a65f9" />
+
+Test have found 0 collisions, so we can say collitions percent is close to 0.
+
+
+
+
