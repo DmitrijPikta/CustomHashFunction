@@ -3,17 +3,10 @@ package blockchain.hashFunction;
 
 public class Main {
     public static void main(String[] args) {
-        HashFunction hasher = new HashFunction();
-        String salt = "fdfsfvdsvfdvf";
-
-        /*System.out.println(hasher.hashFile("data/big1.txt", salt));
-        System.out.println(hasher.hashFile("data/big2.txt", salt));
-        System.out.println(hasher.hashFile("data/big3.txt", salt));
-        System.out.println(hasher.hashFile("data/empty.txt", salt));
-        System.out.println(hasher.hashFile("data/oneSymbol1.txt", salt));
-        System.out.println(hasher.hashFile("data/oneSymbol2.txt", salt));*/
-
-        HashSpeedTest test = new HashSpeedTest();
-        System.out.println(test.test("data/konstitucija.txt"));
+        RandomStringPairsFileGenerator pairsFileGenerator = new RandomStringPairsFileGenerator();
+        pairsFileGenerator.generateStringPairsFile("data/pairs10.txt", 100000, 10);
+        pairsFileGenerator.generateStringPairsFile("data/pairs100.txt", 100000, 100);
+        pairsFileGenerator.generateStringPairsFile("data/pairs500.txt", 100000, 500);
+        pairsFileGenerator.generateStringPairsFile("data/pairs1000.txt", 100000, 1000);
     }
 }

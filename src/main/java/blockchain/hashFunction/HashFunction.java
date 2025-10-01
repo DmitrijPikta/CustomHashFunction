@@ -1,7 +1,5 @@
 package blockchain.hashFunction;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.*;
 import java.util.stream.IntStream;
 
@@ -12,11 +10,9 @@ public class HashFunction {
     public String hashFile(String filename, String salt){
         FileReader reader = new FileReader();
         String data = reader.readFile(filename);
-
         if (data == null){
             return null;
         }
-
         return hashString(data, salt);
     }
 
