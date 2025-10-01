@@ -23,4 +23,17 @@ class HashFunctionTest {
         String secondHash = hasher.hashFile(filepath, salt);
         assertEquals(firstHash, secondHash);
     }
+
+    @ParameterizedTest
+    @CsvFileSource(resources = {
+            "/pairs10.csv",
+            "/pairs100.csv",
+            "/pairs500.csv",
+            "/pairs1000.csv"
+    })
+    void hashString_shouldReturnDifferentHash_WhenInputIsDifferent(String input1, String input2){
+        String hash1 = hasher.hashString(input1, salt);
+        String hash2 = hasher.hashString(input2, salt);
+        assertNotEquals(hash1, hash2);
+    }
 }

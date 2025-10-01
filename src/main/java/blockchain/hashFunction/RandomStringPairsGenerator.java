@@ -30,7 +30,7 @@ public class RandomStringPairsGenerator {
             for (int i = 0; i < pairsNumber; i++) {
                 StringBuilder generatedPair = new StringBuilder();
                 generatedPair.append(randomGenerator.generateString(stringLength));
-                generatedPair.append(" ");
+                generatedPair.append(",");
                 generatedPair.append(randomGenerator.generateString(stringLength));
                 generatedPairs.add(generatedPair);
             }
@@ -44,7 +44,7 @@ public class RandomStringPairsGenerator {
                 secondString.setCharAt(0, secondStringDifferentSymbol);
 
                 generatedPair.append(firstGeneratedString);
-                generatedPair.append(" ");
+                generatedPair.append(",");
                 generatedPair.append(secondString);
                 generatedPairs.add(generatedPair);
             }
