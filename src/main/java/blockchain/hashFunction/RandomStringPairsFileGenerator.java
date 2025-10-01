@@ -1,7 +1,6 @@
 package blockchain.hashFunction;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 
 public class RandomStringPairsFileGenerator {
@@ -15,6 +14,14 @@ public class RandomStringPairsFileGenerator {
         pairsGenerator = new RandomStringPairsGenerator();
     }
 
+    public RandomStringPairsFileGenerator(boolean pairOneSymbolDifference){
+        pairsGenerator = new RandomStringPairsGenerator(pairOneSymbolDifference);
+    }
+
+    public RandomStringPairsFileGenerator(int stringLowBound, int stringUpBound, boolean pairOneSymbolDifference){
+        pairsGenerator = new RandomStringPairsGenerator(stringLowBound, stringUpBound, pairOneSymbolDifference);
+    }
+
     public void generateStringPairsFile(String filename, int pairsNumber, int stringLength){
         try {
             File file = new File(filename);
@@ -26,13 +33,9 @@ public class RandomStringPairsFileGenerator {
         }
 
         String generatedPairs = pairsGenerator.generateStringPairs(pairsNumber, stringLength);
-        try {
-            FileWriter writer = new FileWriter(filename);
-            writer.write(generatedPairs);
-            writer.close();
-        } catch (IOException e){
-            System.out.println("An error occurred trying write to file");
-            e.printStackTrace();
-        }
+        FileWriter writer = new FileWriter();
+        writer.write(filename, generatedPairs);
     }
+
+
 }
