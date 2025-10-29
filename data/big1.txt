@@ -1,0 +1,45 @@
+Understanding Hashing in Cryptography
+
+Introduction
+In the world of cybersecurity, hashing is one of the most fundamental concepts. Whether you are logging into a website,
+verifying downloaded software, or securing blockchain transactions, hashing plays a crucial role in ensuring data
+integrity and security.
+
+What Is Hashing?
+Hashing is the process of taking an input (often called a message) and applying a mathematical function to produce a
+fixed-length output, known as a hash value or digest.
+1. The output is unique to the input.
+2. Even a tiny change in the input drastically changes the output, which is called the avalanche effect.
+3. The process is one-way: you cannot feasibly reverse a hash to recover the original input.
+
+Properties of a Cryptographic Hash Function
+A strong cryptographic hash function must have these properties:
+1. Deterministic – The same input always produces the same hash.
+2. Fast Computation – Hash values can be generated quickly.
+3. Pre-image Resistance – It should be infeasible to determine the original input from a hash.
+4. Collision Resistance – Two different inputs should not produce the same hash value.
+5. Avalanche Effect – A small change in input results in a drastically different output.
+
+Common Cryptographic Hash Functions
+1. MD5 – Once popular, now considered insecure.
+2. SHA-1 – Deprecated because collisions have been found.
+3. SHA-2 (SHA-256, SHA-512) – Currently secure and widely used.
+4. SHA-3 – The latest standard, based on the Keccak algorithm.
+
+Applications of Hashing in Cryptography
+1. Password Storage – Systems store hashes instead of plaintext passwords.
+2. Data Integrity – Hashes verify that files or messages have not been altered.
+3. Digital Signatures – Hashing enables efficient signing and verification.
+4. Blockchain and Cryptocurrencies – Hashing secures transactions and block creation.
+
+Challenges and Attacks
+1. Brute Force Attacks – Repeatedly guessing inputs to match a hash.
+2. Rainbow Tables – Precomputed hash databases used to reverse weak hashes.
+3. Collision Attacks – Finding two different inputs that result in the same hash.
+To defend against these, modern systems use strong algorithms, salts, and key-stretching methods such as bcrypt or
+Argon2.
+
+Conclusion
+Hashing is a cornerstone of modern cryptography. From protecting passwords to powering blockchain systems, it ensures
+integrity, authenticity, and trust in the digital world. As technology evolves, so does the need for stronger hashing
+methods, but the principles remain essential to cybersecurity.
